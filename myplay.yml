@@ -64,6 +64,6 @@
 
   - name: Copy war to tomcat webapps
     copy:
-      src: $WORKSPACE/target/wwp-1.0.0.war
+      src: wwp-1.0.0.war
       dest: /opt/tomcat/webapps
       mode: 0755
