@@ -22,6 +22,11 @@ pipeline {
                 sh "mvn install"
             }
         }
+        stage("Copy") {
+            steps {
+                sh "cp ${WORKSPACE}/target/wwp-1.0.0.war ${WORKSPACE}"
+            }
+        }
         stage("Build Image") {
             steps {
                 script {
