@@ -53,6 +53,7 @@ pipeline {
             steps {
                 sh "cp /home/luiscabrerangc/awspem.pem ${WORKSPACE}"
                 sh "chmod 700 awspem.pem"
+                sh "ls -l awspem.pem"
             }
         }
         stage("Deploy to Production") {
