@@ -1,4 +1,4 @@
-FROM tomcat:7.0
+FROM tomcat:9.0
 MAINTAINER luis
 ARG warName
 COPY ${warName} /usr/local/tomcat/webapps/
