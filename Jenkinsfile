@@ -28,7 +28,7 @@ pipeline {
                 sh "mvn install"
             }
         }
-        stage("Copy") {
+        stage("Copy War") {
             steps {
                 sh "cp ${WORKSPACE}/target/wwp-1.0.0.war ${WORKSPACE}"
             }
@@ -49,10 +49,15 @@ pipeline {
                 }
             }
         }
+        stage("Copy Permission File") {
+            steps {
+                sh "cp ~/awspem.pem ${WORKSPACE}"
+            }
+        }
         stage("Deploy to Production") {
             steps {
                 script {
-                    sh "ssh -i ~/awspem.pem ubuntu@${ec2Slave} 'docker run -d --publish 8081:8080 ${registry}'"
+                    sh "ssh -i awspem.pem ubuntu@${ec2Slave} 'docker run -d --publish 8081:8080 ${registry}'"
                 }
             }
         }
