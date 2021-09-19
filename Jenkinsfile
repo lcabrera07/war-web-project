@@ -4,6 +4,10 @@ pipeline {
         maven 'apache-maven-3.3.9'
         jdk 'jdk8'
     }
+    environment {
+        registry = "lcabrera07/bsafe"
+        registryCredential = ‘dockerhub’
+    }
     stages {
         stage("Environment") {
             steps {
@@ -36,7 +40,7 @@ pipeline {
         }
         stage("Deploy") {
             steps {
-                sh 'echo "hi"'
+                docker.withRegistry()
             }
         }
     }
