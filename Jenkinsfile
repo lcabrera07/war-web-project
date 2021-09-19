@@ -5,7 +5,7 @@ pipeline {
         jdk 'jdk8'
     }
     environment {
-        registry = 'cabrera07/bsafe'
+        registry = 'lcabrera07/bsafe'
         registryCredential = 'dockerhub'
         app = ''
     }
