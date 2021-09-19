@@ -7,6 +7,7 @@ pipeline {
     environment {
         registry = 'lcabrera07/bsafe'
         registryCredential = 'dockerhub'
+        ec2Slave = '52.87.186.54'
         app = ''
     }
     stages {
@@ -39,12 +40,19 @@ pipeline {
                 }
             }
         }
-        stage("Deploy") {
+        stage("Publish") {
             steps {
                 script {
                     docker.withRegistry('', registryCredential ) {
                         app.push()
                     }
+                }
+            }
+        }
+        stage("Deploy to Production") {
+            steps {
+                script {
+                    sh "ssh -i ~/awspem.pem ubuntu@${ec2Slave} 'docker run -d --publish 8081:8080 ${registry}'"
                 }
             }
         }
