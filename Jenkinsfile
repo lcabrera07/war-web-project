@@ -5,8 +5,8 @@ pipeline {
         jdk 'jdk8'
     }
     environment {
-        registry = "lcabrera07/bsafe"
-        registryCredential = ‘dockerhub’
+        registry = 'cabrera07/bsafe'
+        registryCredential = 'ockerhub'
     }
     stages {
         stage("Environment") {
