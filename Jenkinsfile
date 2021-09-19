@@ -22,6 +22,10 @@ pipeline {
                 sh "mvn install"
             }
         }
+        def app
+        stage("Build Image") {
+            app = docker.build("war", "--build-arg warName=wwp-1.0.0.war")
+        }
         stage("Deploy") {
             steps {
                 sh 'echo "hi"'
