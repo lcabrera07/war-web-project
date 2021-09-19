@@ -1,3 +1,4 @@
+def app
 pipeline {
     agent any
     tools {
@@ -22,7 +23,6 @@ pipeline {
                 sh "mvn install"
             }
         }
-        def app
         stage("Build Image") {
             steps {
                 app = docker.build("war", "--build-arg warName=wwp-1.0.0.war")
