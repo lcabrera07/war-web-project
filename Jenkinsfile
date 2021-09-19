@@ -51,7 +51,7 @@ pipeline {
         }
         stage("Copy Permission File") {
             steps {
-                sh "cp ~/awspem.pem ${WORKSPACE}"
+                sh "cp /home/luiscabrerangc/awspem.pem ${WORKSPACE}"
             }
         }
         stage("Deploy to Production") {
