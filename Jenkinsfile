@@ -40,7 +40,11 @@ pipeline {
         }
         stage("Deploy") {
             steps {
-                docker.withRegistry()
+                script {
+                    docker.withRegistry('', registryCredential ) {
+                        app.push()
+                    }
+                }
             }
         }
     }
