@@ -59,7 +59,7 @@ pipeline {
         stage("Deploy to Production") {
             steps {
                 script {
-                    sh "ssh -i awspem.pem ubuntu@${ec2Slave} 'docker run -d --publish 8081:8080 ${registry}'"
+                    sh "docker -H ssh://ubuntu@${ec2Slave} run -d -p 8081:8080 ${registry}"
                 }
             }
         }
