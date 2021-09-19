@@ -59,7 +59,7 @@ pipeline {
         stage("Deploy to Production") {
             steps {
                 script {
-                    sh "ssh -i awspem.pem ubuntu@${ec2Slave} sudo apt-get update -y; sudo apt install docker.io -y; sudo snap install docker -y"
+                    sh "ssh -i awspem.pem ubuntu@${ec2Slave} sudo apt-get update -y; sudo snap install docker -y"
                     sh "docker -H ssh://ubuntu@${ec2Slave}:22 run -d -p 8081:8080 ${registry}"
                 }
             }
