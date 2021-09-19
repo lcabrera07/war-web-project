@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         registry = 'cabrera07/bsafe'
-        registryCredential = 'ockerhub'
+        registryCredential = 'dockerhub'
     }
     stages {
         stage("Environment") {
