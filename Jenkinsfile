@@ -59,7 +59,6 @@ pipeline {
         stage("Deploy to Production") {
             steps {
                 script {
-                    sh "ssh -i awspem.pem ubuntu@${ec2Slave} sudo echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers; apt-get update -y; apt install docker.io -y; snap install docker -y"
                     sh "docker -H ssh://ubuntu@${ec2Slave}:22 run -d -p 8081:8080 ${registry}"
                 }
             }
