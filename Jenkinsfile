@@ -35,7 +35,7 @@ pipeline {
         stage("Build Image") {
             steps {
                 script {
-                    app = docker.build("war", "--build-arg warName=wwp-1.0.0.war .")
+                    app = docker.build(registry, "--build-arg warName=wwp-1.0.0.war .")
                 }
             }
         }
