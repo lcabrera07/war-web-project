@@ -1,4 +1,3 @@
-def app
 pipeline {
     agent any
     tools {
@@ -25,7 +24,7 @@ pipeline {
         }
         stage("Build Image") {
             steps {
-                app = docker.build("war", "--build-arg warName=wwp-1.0.0.war")
+                docker.build("war", "--build-arg warName=wwp-1.0.0.war")
             }
         }
         stage("Deploy") {
